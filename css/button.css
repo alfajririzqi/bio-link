@@ -1,0 +1,364 @@
+/* ====== SWITCHER & TOGGLE ====== */
+.switcher-container {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  z-index: 50;
+}
+/* Toggle Switch */
+.switch {
+  --_switch-bg-clr: rgb(255, 255, 255);
+  --_switch-padding: 4px;
+  --_slider-bg-clr: rgb(24, 24, 24);
+  --_slider-bg-clr-on: rgba(24, 24, 24);
+  --_slider-txt-clr: #ffffff;
+  --_label-padding: 1rem 2rem;
+  --_switch-easing: cubic-bezier(0.47, 1.64, 0.41, 0.8);
+  width: fit-content;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  justify-content: center;
+  border-radius: 20px;
+  cursor: pointer;
+  isolation: isolate;
+  position: relative;
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.178);
+}
+.switch input[type="checkbox"] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border-width: 0;
+}
+.switch > span {
+  display: grid;
+  place-content: center;
+  padding: var(--_label-padding);
+  color: rgb(24, 24, 24);
+  font-weight: 450;
+  transition: opacity 300ms ease-in-out 150ms, color 300ms ease-in-out;
+}
+.switch::before,
+.switch::after {
+  content: "";
+  position: absolute;
+  border-radius: inherit;
+  transition: inset 150ms ease-in-out;
+}
+.switch::before {
+  background-color: var(--_slider-bg-clr);
+  inset: var(--_switch-padding) 50% var(--_switch-padding) var(--_switch-padding);
+  transition: inset 500ms var(--_switch-easing), background-color 500ms ease-in-out;
+  z-index: -1;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,0.3),
+              0 1px rgba(255,255,255,0.3);
+}
+.switch::after {
+  background-color: var(--_switch-bg-clr);
+  inset: 0;
+  z-index: -2;
+}
+.switch:focus-within::after { inset: -0.25rem; }
+.switch:has(input:checked):hover > span:first-of-type,
+.switch:has(input:not(:checked)):hover > span:last-of-type {
+  opacity: 1;
+  transition-delay: 0ms;
+  transition-duration: 100ms;
+}
+.switch:has(input:checked):hover::before {
+  inset: var(--_switch-padding) var(--_switch-padding) var(--_switch-padding) 45%;
+}
+.switch:has(input:not(:checked)):hover::before {
+  inset: var(--_switch-padding) 45% var(--_switch-padding) var(--_switch-padding);
+}
+.switch:has(input:checked)::before {
+  background-color: var(--_slider-bg-clr-on);
+  inset: var(--_switch-padding) var(--_switch-padding) var(--_switch-padding) 50%;
+}
+.switch > span:last-of-type,
+.switch > input:checked + span:first-of-type {
+  opacity: 0.75;
+}
+.switch > input:checked ~ span:last-of-type {
+  opacity: 1;
+  color: white;
+}
+.switch:has(input:not(:checked)) > span:first-of-type {
+  color: white;
+}
+/* Dark Mode Adjustments */
+body.dark-mode .switch {
+  --_switch-bg-clr: rgba(32, 30, 37, 0.92);
+  --_slider-bg-clr: #fff;
+  --_slider-bg-clr-on: rgba(255, 255, 255);
+  --_slider-border-clr: rgba(60, 56, 70, 0.6);
+}
+body.dark-mode .switch::before {
+  box-shadow: inset 0 1px 1px rgba(255,255,255,0.3),
+              0 1px rgba(20, 20, 24, 0.96);
+}
+body.dark-mode .switch > span { color: #fff; }
+body.dark-mode .switch > input:checked ~ span:last-of-type,
+body.dark-mode .switch:has(input:not(:checked)) > span:first-of-type {
+  color: rgb(0, 0, 0);
+}
+body.dark-mode .switch:has(input:checked) > span:first-of-type,
+body.dark-mode .switch:has(input:not(:checked)) > span:last-of-type {
+  opacity: 0.75;
+}
+
+/* ====== RESPONSIVE TOGGLE SWITCH DI PONSEL ====== */
+@media (max-width: 640px) {
+  .switch {
+    transform-origin: top right;
+    border-radius: 15px;
+  }
+  .switch input[type="checkbox"] {
+    border-radius: 10px;
+  }
+  .switch > span {
+    padding: 0.6rem 0.8rem;
+  }
+  .switcher-container {
+    top: 32px;
+    right: 32px;
+  }
+}
+
+/* ====== SOCIAL MEDIA BUTTONS ====== */
+.social-links {
+  display: flex;
+  gap: 18px;
+  justify-content: center;
+  margin: 28px 0 18px;
+}
+.Btn {
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color: transparent;
+  position: relative;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.svgContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  backdrop-filter: blur(0px);
+  letter-spacing: 0.8px;
+  border-radius: 10px;
+  transition: all 0.3s;
+  border: 1px solid rgba(156, 156, 156, 0.466);
+}
+.BG {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background: #0077b5;
+  z-index: -1;
+  border-radius: 10px;
+  pointer-events: none;
+  transition: all 0.3s;
+}
+.Btn:hover .BG {
+  transform: rotate(35deg);
+  transform-origin: bottom;
+}
+.Btn:hover .svgContainer {
+  border: 1px solid rgba(216, 216, 216, 0.466);
+  background-color: rgba(190, 190, 190, 0.466);
+  backdrop-filter: blur(4px);
+}
+.Btn i { font-size: 1.3em !important; }
+.bg-whatsapp .BG { background: #25d366; }
+.bg-instagram .BG { background: #E1306C; }
+.bg-behance .BG   { background: #1769ff; }
+.bg-email .BG     { background: #0385f0; }
+.bg-linkedin .BG  { background: #0077b5; }
+.bg-tiktok .BG    { background: #0a0a0a; }
+.bg-youtube .BG   { background: #FF0000; }
+
+/* ====== SUBSCRIBE BUTTON (LIQUID GLASS) ====== */
+.subscribe-btn {
+  width: 40px;
+  height: 40px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* --- LIQUID GLASS STYLES (Light Mode) --- */
+  background-color: rgba(255, 255, 255, 0.4); 
+  backdrop-filter: blur(8px); 
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 0;
+  padding: 0;
+}
+
+/* Hover effect di Light Mode */
+.subscribe-btn:hover { 
+    background-color: rgba(255, 255, 255, 0.6); 
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.subscribe-btn .bell {
+  width: 15px;
+  height: auto;
+  display: block;
+}
+.subscribe-btn .bell path { 
+    fill: rgb(0,0,0); 
+    transition: fill 0.3s ease;
+}
+
+/* Active State */
+.subscribe-btn:active { 
+    transform: scale(0.9); 
+    transition-duration: 0s; 
+}
+
+/* ====== DARK MODE LIQUID GLASS ====== */
+body.dark-mode .subscribe-btn { 
+    /* Dark Glass */
+    background-color: rgba(60, 60, 60, 0.3); /* Background abu-abu gelap transparan */
+    border: 1px solid rgba(100, 100, 100, 0.5); /* Border abu-abu gelap semi-transparan */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.25);
+}
+
+/* Hover effect di Dark Mode */
+body.dark-mode .subscribe-btn:hover { 
+    background-color: rgba(70, 70, 70, 0.5); 
+    box-shadow: 0 6px 12px rgba(0,0,0,0.35);
+}
+
+body.dark-mode .subscribe-btn .bell path { 
+    fill: white; /* Icon putih di Dark Mode */
+}
+
+/* ====== ANIMATION ====== */
+.subscribe-btn:hover .bell { animation: bellRing 0.9s both; }
+@keyframes bellRing {
+  0%, 100% { transform-origin: top; }
+  15% { transform: rotateZ(10deg); }
+  30% { transform: rotateZ(-10deg); }
+  45% { transform: rotateZ(5deg); }
+  60% { transform: rotateZ(-5deg); }
+  75% { transform: rotateZ(2deg); }
+}
+
+/* ====== TOGGLE TRACK GLASS MORPHISM ====== */
+.toggle-track-glass {
+    /* Glass Effect */
+    background-color: rgba(255, 255, 255, 0.4); 
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.6); 
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: all 0.5s ease;
+}
+
+/* Style Saat Toggle DICENTANG (Peer Checked - Light Mode) */
+.toggle-track-glass.peer:checked {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-color: rgba(0, 0, 0, 0.2); 
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+}
+
+
+/* Dark Mode Overrides */
+body.dark-mode .toggle-track-glass {
+    /* Dark Glass Effect */
+    background-color: rgba(50, 50, 50, 0.3);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(80, 80, 80, 0.5);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+/* Style Saat Dark Mode dan Toggle DICENTANG (Peer Checked) */
+body.dark-mode .toggle-track-glass.peer:checked {
+    background-color: rgba(0, 0, 0, 0.4); 
+    border-color: rgba(100, 100, 100, 0.6); 
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.4);
+}
+
+/* ====== HOME BUTTON (LIQUID GLASS) ====== */
+.home-btn {
+  width: 40px;
+  height: 40px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* --- LIQUID GLASS STYLES (Light Mode) --- */
+  background-color: rgba(255, 255, 255, 0.4); 
+  backdrop-filter: blur(8px); 
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 0;
+  padding: 0;
+}
+/* Hover effect di Light Mode */
+.home-btn:hover { 
+    background-color: rgba(255, 255, 255, 0.6); 
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+.home-btn .home-icon {
+  width: 17px;
+  height: auto;
+  display: block;
+}
+.home-btn .home-icon path { 
+    fill: rgb(0,0,0); 
+    transition: fill 0.3s ease;
+}
+/* Active State */
+.home-btn:active { 
+    transform: scale(0.9); 
+    transition-duration: 0s; 
+}
+/* ====== DARK MODE LIQUID GLASS ====== */
+body.dark-mode .home-btn { 
+    /* Dark Glass */
+    background-color: rgba(60, 60, 60, 0.3); 
+    border: 1px solid rgba(100, 100, 100, 0.5);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.25);
+}
+/* Hover effect di Dark Mode */
+body.dark-mode .home-btn:hover { 
+    background-color: rgba(70, 70, 70, 0.5); 
+    box-shadow: 0 6px 12px rgba(0,0,0,0.35);
+}
+body.dark-mode .home-btn .home-icon path { 
+    fill: white; 
+}
+/* ====== HOME BUTTON HOVER ANIMATION ====== */
+.home-btn:hover .home-icon {
+  animation: homePulse 0.9s both;
+}
+
+@keyframes homePulse {
+  0%, 100% { transform-origin: top; }
+  15% { transform: scale(1.1) rotateZ(5deg); }
+  30% { transform: scale(1.05) rotateZ(-5deg); }
+  45% { transform: scale(1.08) rotateZ(2deg); }
+  60% { transform: scale(1.04) rotateZ(-2deg); }
+  75% { transform: scale(1.06) rotateZ(1deg); }
+}

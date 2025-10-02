@@ -1,0 +1,333 @@
+/* ====== SUBSCRIBE MODAL ====== */
+#subscribeModal {
+  transition: background-color 0.3s ease;
+}
+
+body.dark-mode #subscribeModal {
+  background-color: rgba(0, 0, 0, 0.45);
+}
+
+#subscribeModal.modal-open {
+  display: flex;
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  position: relative;
+  
+  /* --- LIQUID GLASS STYLES (Light Mode) --- */
+  background: rgba(255, 255, 255, 0.75); 
+  backdrop-filter: blur(10px); 
+  border: 1px solid rgba(255, 255, 255, 0.5); 
+  
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15); 
+  
+  width: 90%;
+  max-width: 400px;
+  max-height: 90vh;
+  overflow-y: auto;
+  transition: all 0.3s ease;
+  z-index: 10000;
+}
+  /* --- LIQUID GLASS STYLES (Dark Mode) --- */
+body.dark-mode .modal-content {
+  background-color: rgba(32, 30, 37, 0.3) !important; 
+  backdrop-filter: blur(8px); 
+  border: 1px solid rgba(60, 56, 70, 0.8); 
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+body.dark-mode #subscribeModal h2 { color: #e5e7eb !important; }
+body.dark-mode #subscribeModal p  { color: #9ca3af !important; }
+
+#closeModal {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  color: #6b7280;
+  transition: color 0.3s ease;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+#closeModal:hover {
+  color: #374151;
+  background-color: rgba(0,0,0,0.05);
+}
+
+body.dark-mode #closeModal { color: #9ca3af !important; }
+body.dark-mode #closeModal:hover {
+  color: #e5e7eb !important;
+  background-color: rgba(255,255,255,0.05);
+}
+
+/* ====== FORM INPUT STYLING (DEFAULT LIQUID GLASS) ====== */
+
+.modal-input {
+  width: 100%;
+  padding: 12px 16px;
+  
+  /* --- LIQUID GLASS BASE --- */
+  background-color: rgba(255, 255, 255, 0.7); /* Background Light Glass */
+  border: 1px solid rgba(229, 231, 235, 0.8); /* Border Light */
+  color: #1f2937; /* Teks gelap */
+  
+  border-radius: 8px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.modal-input:focus {
+  border-color: #7a9cc6; /* Warna border fokus */
+  box-shadow: 0 0 0 3px rgba(122, 156, 198, 0.2); /* Shadow fokus */
+  background-color: rgba(255, 255, 255, 0.9); /* Lebih solid saat fokus */
+}
+
+.modal-input::placeholder { 
+    color: #6b7280; /* Warna placeholder */
+}
+
+
+/* ====== DARK MODE INPUT STYLING (DEFAULT LIQUID GLASS) ====== */
+
+body.dark-mode .modal-input {
+  background-color: rgba(45, 45, 50, 0.4) !important; /* Background Dark Glass */
+  border-color: rgba(75, 75, 85, 0.8) !important;
+  color: #e5e7eb !important;
+}
+
+body.dark-mode .modal-input:focus {
+  border-color: #a78bfa !important; /* Border ungu terang */
+  box-shadow: 0 0 0 3px rgba(167, 139, 250, 0.2) !important;
+  background-color: rgba(45, 45, 50, 0.7) !important;
+}
+
+body.dark-mode .modal-input::placeholder { 
+    color: #9ca3af !important; 
+}
+
+/* Submit button */
+.modal-submit {
+  width: 100%;
+  padding: 12px 16px;
+  background-color: #000;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.modal-submit:hover {
+  background-color: #374151;
+  transform: translateY(-1px);
+}
+body.dark-mode .modal-submit {
+  background-color: rgba(255,255,255,0.9) !important;
+  color: #000 !important;
+}
+body.dark-mode .modal-submit:hover {
+  background-color: rgba(219,219,219,0.9) !important;
+}
+
+/* ====== DISCOUNT CODE LAYOUT ====== */
+.discount-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  border-radius: 0.5rem; 
+  gap: 1rem; 
+}
+
+.discount-code {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #1e293b;
+  border: 1px solid #e2e8f0;
+  padding: 0.75rem; 
+  border-radius: 0.5rem; 
+  letter-spacing: 1px;
+}
+
+.copy-btn {
+  background: #f1f5f9;
+  color: #1e293b;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.copy-btn:hover {
+  background: #e2e8f0;
+}
+
+body.dark-mode .discount-container {
+  border-color: #4b4a50;
+}
+
+body.dark-mode .discount-code {
+  color: #dbdbdb;
+}
+
+body.dark-mode .copy-btn {
+  background: rgba(255, 255, 255, 0.1);
+  color: #e5e7eb;
+}
+
+/* Button Action */
+body.dark-mode .modal-action-btn {
+    /* Ganti background hitam kaku menjadi abu-abu terang / putih untuk Dark Mode */
+    background-color: rgba(255, 255, 255, 0.95) !important; 
+    color: #000 !important; /* Pastikan teks menjadi hitam */
+}
+
+/* Dark Mode Hover State */
+body.dark-mode .modal-action-btn:hover {
+    /* Sedikit lebih gelap saat di-hover */
+    background-color: rgba(200, 200, 200, 0.9) !important;
+}
+
+/* Dark Mode SVG/Icon Color (Penting jika menggunakan 'currentColor') */
+body.dark-mode .modal-action-btn svg path {
+    fill: #000 !important; /* Pastikan ikon panah berwarna hitam di Dark Mode */
+}
+
+/* Light Mode (Jika Anda ingin tombol terlihat lebih menonjol dari liquid glass) */
+.modal-action-btn {
+    background-color: #000;
+    color: white;
+}
+
+/* ========================================= */
+/* YOUTUBE BASE MODAL */
+/* ========================================= */
+
+.video-responsive {
+  overflow: hidden;
+  padding-bottom: 56.25%; 
+  position: relative;
+  height: 0;
+  width: 100%;
+}
+
+.video-responsive iframe {
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
+#youtubeModal .modal-content {
+    max-width: 42rem; 
+    padding: 1rem; 
+    width: 100%; 
+}
+
+/* MEDIA QUERY: OPTIMASI KHUSUS MOBILE */
+@media (max-width: 640px) {
+    #youtubeModal .modal-content {
+        width: 90vw; 
+        max-width: 90vw;
+        
+        padding: 1rem; 
+    }
+}
+
+/* ========================================= */
+/* COMISSION MODAL */
+/* ========================================= */
+
+.form-float-input {
+    display: block;
+    padding: 10px 0; 
+    padding-inline-start: 0; 
+    padding-inline-end: 0; 
+    width: 100%;
+    font-size: 0.875rem; 
+    color: #1f2937; 
+    background-color: transparent;
+    border: 0;
+    border-bottom: 2px solid #D1D5DB; 
+    appearance: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-float-input:focus {
+    outline: none;
+    border-bottom-color: #2563EB; 
+    box-shadow: none; 
+}
+
+/* Float Label Base */
+.form-float-label {
+    position: absolute;
+    font-size: 0.875rem; 
+    color: #6B7280; 
+    transition: all 0.3s ease;
+    top: 10px; 
+    transform-origin: 0 0;
+    z-index: -10;
+    cursor: text;
+    pointer-events: none;
+    left: 0;
+}
+
+/* Floating behavior (saat placeholder-shown: label di posisi bawah) */
+.form-float-input:placeholder-shown ~ .form-float-label {
+    transform: translateY(5px) translateX(25px) scale(0.95); 
+    z-index: -10;
+}
+
+/* Floating behavior  */
+.form-float-input:focus ~ .form-float-label,
+.form-float-input:not(:placeholder-shown) ~ .form-float-label {
+    transform: translateY(-16px) translateX(0) scale(0.75); 
+    z-index: 1; 
+    left: 0; 
+}
+
+.form-float-input:focus ~ .form-float-label {
+    color: #2563EB; 
+}
+
+/* Dark Mode Overrides */
+body.dark-mode .form-float-input {
+    color: #E5E7EB; 
+    border-bottom-color: #4B5563; 
+    background-color: transparent !important; 
+}
+
+body.dark-mode .form-float-input:focus {
+    border-bottom-color: #3B82F6; 
+}
+
+body.dark-mode .form-float-label {
+    color: #9CA3AF; 
+}
+
+body.dark-mode .form-float-input:focus ~ .form-float-label {
+    color: #3B82F6; 
+}
