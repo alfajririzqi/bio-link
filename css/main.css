@@ -23,7 +23,7 @@ body.dark-mode {
 }
 
 /* ========================================= */
-/* BACKGROUND GLOW (Menggunakan SATU Pseudo-Element) */
+/* BACKGROUND GLOW */
 /* ========================================= */
 body::before {
     content: "";
@@ -69,7 +69,7 @@ body.dark-mode::before {
   transition: all 0.5s ease;
 }
 
-/* --- LIQUID GLASS HANYA PADA KONTEN UTAMA (.shared-card-main) --- */
+/* --- LIQUID GLASS (.shared-card-main) --- */
 .shared-card-main {
     /* Liquid Glass Light Mode */
     background: rgba(255, 255, 255, 0.3);
@@ -107,7 +107,7 @@ a.shared-card-style:hover {
 
 /* --- DARK MODE CARD STYLES --- */
 body.dark-mode .shared-card-main {
-    /* Liquid Glass Dark Mode untuk Container Utama */
+    /* Liquid Glass Dark Mode */
     background: rgba(20, 20, 24, 0.4); 
     backdrop-filter: blur(10px);
     border-color: rgba(60, 56, 70, 0.6);
@@ -116,11 +116,10 @@ body.dark-mode .shared-card-main {
 }
 
 body.dark-mode .shared-card-style {
-    /* Link di Dark Mode harus kontras (lebih solid gelap) */
     background: rgba(20, 20, 24, 0.96); 
     border-color: rgba(45, 36, 61, 0.5);
     backdrop-filter: none;
-    box-shadow: none; /* Hapus bayangan agar terlihat menyatu dengan induknya */
+    box-shadow: none; 
 }
 
 body.dark-mode .shared-card-link {
@@ -160,14 +159,14 @@ body.dark-mode .profile-header p {
   font-size: 0.9rem;
   font-weight: 600;
   text-transform: uppercase;
-  color: #6b7280; /* abu-abu netral */
+  color: #6b7280; 
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
   border-bottom: 1px solid rgba(0,0,0,0.1);
   padding-bottom: 0.25rem;
 }
 body.dark-mode .section-title {
-  color: #9ca3af; /* abu-abu terang */
+  color: #9ca3af; 
   border-color: rgba(255,255,255,0.1);
 }
 
@@ -255,7 +254,7 @@ body.dark-mode .shadow-lg {
     background: rgba(20, 20, 24, 0.9); 
 }
 
-/* Gaya khusus untuk elemen <select> */
+/* Gaya elemen */
 body.dark-mode select {
     background-color: #1e1e2c !important; 
     color: #e5e7eb !important; 
@@ -268,15 +267,12 @@ body.dark-mode option {
     color: #e5e7eb;
 }
 
-/* Mengatasi input range track di dark mode */
 body.dark-mode input[type="range"] {
     background-color: #4b5563; 
 }
 
-/* Mengatasi label dan teks lain yang menggunakan text-gray-700 */
 body.dark-mode .text-gray-700 { color: #d1d5db; } 
 
-/* Mengatasi result card yang sebelumnya mungkin putih */
 .result-card {
     background-color: #ffffff;
     transition: background-color 0.5s ease;
@@ -336,7 +332,6 @@ body.dark-mode .result-card {
 }
 
 /* ====== ASSETS CONTAINER & ICONS ====== */
-/* Make .assets-card-main behave like .shared-card-main */
 .assets-card-main {
   background: rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(10px);
@@ -347,7 +342,6 @@ body.dark-mode .result-card {
   transition: all 0.5s ease;
 }
 
-/* Ensure cards inside assets container match shared card layout */
 .assets-card-main a.shared-card-style,
 #assets-content a.shared-card-style {
   display: flex !important;
@@ -359,7 +353,6 @@ body.dark-mode .result-card {
   box-sizing: border-box;
 }
 
-/* Icon (<i>) styling inside asset cards */
 .assets-card-main a.shared-card-style i,
 #assets-content a.shared-card-style i {
   font-size: 1.4em;
@@ -393,3 +386,4 @@ body.dark-mode .assets-card-main a.shared-card-style i,
 body.dark-mode #assets-content a.shared-card-style i {
   background: rgba(255,255,255,0.04);
 }
+
