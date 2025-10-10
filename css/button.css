@@ -5,7 +5,6 @@
   right: 24px;
   z-index: 50;
 }
-/* Toggle Switch */
 .switch {
   --_switch-bg-clr: rgb(255, 255, 255);
   --_switch-padding: 4px;
@@ -110,7 +109,7 @@ body.dark-mode .switch:has(input:not(:checked)) > span:last-of-type {
   opacity: 0.75;
 }
 
-/* ====== RESPONSIVE TOGGLE SWITCH DI PONSEL ====== */
+/* ====== RESPONSIVE TOGGLE SWITCH ====== */
 @media (max-width: 640px) {
   .switch {
     transform-origin: top right;
@@ -199,7 +198,6 @@ body.dark-mode .switch:has(input:not(:checked)) > span:last-of-type {
   align-items: center;
   justify-content: center;
   
-  /* --- LIQUID GLASS STYLES (Light Mode) --- */
   background-color: rgba(255, 255, 255, 0.4); 
   backdrop-filter: blur(8px); 
   border: 1px solid rgba(255, 255, 255, 0.6);
@@ -212,7 +210,6 @@ body.dark-mode .switch:has(input:not(:checked)) > span:last-of-type {
   padding: 0;
 }
 
-/* Hover effect di Light Mode */
 .subscribe-btn:hover { 
     background-color: rgba(255, 255, 255, 0.6); 
     box-shadow: 0 6px 12px rgba(0,0,0,0.15);
@@ -228,7 +225,6 @@ body.dark-mode .switch:has(input:not(:checked)) > span:last-of-type {
     transition: fill 0.3s ease;
 }
 
-/* Active State */
 .subscribe-btn:active { 
     transform: scale(0.9); 
     transition-duration: 0s; 
@@ -236,20 +232,18 @@ body.dark-mode .switch:has(input:not(:checked)) > span:last-of-type {
 
 /* ====== DARK MODE LIQUID GLASS ====== */
 body.dark-mode .subscribe-btn { 
-    /* Dark Glass */
-    background-color: rgba(60, 60, 60, 0.3); /* Background abu-abu gelap transparan */
-    border: 1px solid rgba(100, 100, 100, 0.5); /* Border abu-abu gelap semi-transparan */
+    background-color: rgba(60, 60, 60, 0.3);
+    border: 1px solid rgba(100, 100, 100, 0.5);
     box-shadow: 0 4px 6px rgba(0,0,0,0.25);
 }
 
-/* Hover effect di Dark Mode */
 body.dark-mode .subscribe-btn:hover { 
     background-color: rgba(70, 70, 70, 0.5); 
     box-shadow: 0 6px 12px rgba(0,0,0,0.35);
 }
 
 body.dark-mode .subscribe-btn .bell path { 
-    fill: white; /* Icon putih di Dark Mode */
+    fill: white;
 }
 
 /* ====== ANIMATION ====== */
@@ -265,7 +259,6 @@ body.dark-mode .subscribe-btn .bell path {
 
 /* ====== TOGGLE TRACK GLASS MORPHISM ====== */
 .toggle-track-glass {
-    /* Glass Effect */
     background-color: rgba(255, 255, 255, 0.4); 
     backdrop-filter: blur(8px);
     border: 1px solid rgba(255, 255, 255, 0.6); 
@@ -273,23 +266,19 @@ body.dark-mode .subscribe-btn .bell path {
     transition: all 0.5s ease;
 }
 
-/* Style Saat Toggle DICENTANG (Peer Checked - Light Mode) */
 .toggle-track-glass.peer:checked {
     background-color: rgba(0, 0, 0, 0.1);
     border-color: rgba(0, 0, 0, 0.2); 
     box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
 }
 
-
 /* Dark Mode Overrides */
 body.dark-mode .toggle-track-glass {
-    /* Dark Glass Effect */
     background-color: rgba(50, 50, 50, 0.3);
     backdrop-filter: blur(8px);
     border: 1px solid rgba(80, 80, 80, 0.5);
     box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
-/* Style Saat Dark Mode dan Toggle DICENTANG (Peer Checked) */
 body.dark-mode .toggle-track-glass.peer:checked {
     background-color: rgba(0, 0, 0, 0.4); 
     border-color: rgba(100, 100, 100, 0.6); 
@@ -304,7 +293,6 @@ body.dark-mode .toggle-track-glass.peer:checked {
   display: flex;
   align-items: center;
   justify-content: center;
-  /* --- LIQUID GLASS STYLES (Light Mode) --- */
   background-color: rgba(255, 255, 255, 0.4); 
   backdrop-filter: blur(8px); 
   border: 1px solid rgba(255, 255, 255, 0.6);
@@ -315,7 +303,7 @@ body.dark-mode .toggle-track-glass.peer:checked {
   min-width: 0;
   padding: 0;
 }
-/* Hover effect di Light Mode */
+
 .home-btn:hover { 
     background-color: rgba(255, 255, 255, 0.6); 
     box-shadow: 0 6px 12px rgba(0,0,0,0.15);
@@ -329,19 +317,17 @@ body.dark-mode .toggle-track-glass.peer:checked {
     fill: rgb(0,0,0); 
     transition: fill 0.3s ease;
 }
-/* Active State */
 .home-btn:active { 
     transform: scale(0.9); 
     transition-duration: 0s; 
 }
 /* ====== DARK MODE LIQUID GLASS ====== */
 body.dark-mode .home-btn { 
-    /* Dark Glass */
     background-color: rgba(60, 60, 60, 0.3); 
     border: 1px solid rgba(100, 100, 100, 0.5);
     box-shadow: 0 4px 6px rgba(0,0,0,0.25);
 }
-/* Hover effect di Dark Mode */
+
 body.dark-mode .home-btn:hover { 
     background-color: rgba(70, 70, 70, 0.5); 
     box-shadow: 0 6px 12px rgba(0,0,0,0.35);
@@ -349,7 +335,7 @@ body.dark-mode .home-btn:hover {
 body.dark-mode .home-btn .home-icon path { 
     fill: white; 
 }
-/* ====== HOME BUTTON HOVER ANIMATION ====== */
+
 .home-btn:hover .home-icon {
   animation: homePulse 0.9s both;
 }
@@ -361,4 +347,5 @@ body.dark-mode .home-btn .home-icon path {
   45% { transform: scale(1.08) rotateZ(2deg); }
   60% { transform: scale(1.04) rotateZ(-2deg); }
   75% { transform: scale(1.06) rotateZ(1deg); }
+
 }
