@@ -1,4 +1,4 @@
-/* ====== PRELOADER (MENGGUNAKAN DREAMY SKY GLOW) ====== */
+/* ====== PRELOADER ====== */
 #preloader {
   position: fixed;
   inset: 0;
@@ -170,3 +170,4 @@ body.dark-mode .loading-animation {
   }
 
 }
+
