@@ -1,6 +1,6 @@
 // ==============================
 // ---------- Constants & Helpers ----------
-const ANIMATION_DURATION = 300; // ms for modal animation
+const ANIMATION_DURATION = 300; 
 const BASE_YT_EMBED = 'https://www.youtube.com/embed/';
 const YT_PARAMS = '?autoplay=1&rel=0&showinfo=0&modestbranding=1';
 
@@ -16,19 +16,17 @@ function preloadAndSetImg(imgEl, src) {
   }
 }
 
-// ---------- Preloader (single) ----------
+// ---------- Preloader ----------
 function handlePreloader() {
   const preloader = document.getElementById('preloader');
   const mainContent = document.getElementById('main-content');
   const savedTheme = localStorage.getItem('theme');
 
-  // apply dark-mode visual to preloader if needed
   if (preloader) {
     if (savedTheme === 'dark') preloader.classList.add('dark-mode');
     else preloader.classList.remove('dark-mode');
   }
 
-  // hide after a short delay (keeps UX consistent)
   setTimeout(() => {
     if (preloader) preloader.classList.add('hidden');
     if (mainContent) mainContent.classList.remove('hidden');
@@ -59,7 +57,6 @@ function applyDarkMode(isDark) {
   }
 }
 
-// Ensure modal image matches theme when modal opens
 function syncModalImageToTheme() {
   const saved = localStorage.getItem('theme') || (document.body.classList.contains('dark-mode') ? 'dark' : 'light');
   const m = document.getElementById('modalProfileImage');
@@ -82,7 +79,6 @@ function openModal(modalId) {
   modal.classList.add('modal-open');
   document.body.classList.add('modal-open');
 
-  // sync modal image for subscribe modal
   if (modalId === 'subscribeModal') syncModalImageToTheme();
 }
 
@@ -215,7 +211,6 @@ document.addEventListener('DOMContentLoaded', () => {
     darkModeToggle.checked = (savedTheme === 'dark');
     darkModeToggle.addEventListener('change', (e) => { applyDarkMode(e.target.checked); });
   } else {
-    // if no toggle in DOM, still apply saved theme
     if (savedTheme === 'dark') applyDarkMode(true);
   }
 
@@ -225,23 +220,18 @@ const linksMain = document.querySelector('.shared-card-main');
 const assetsMain = document.querySelector('.assets-card-main');
 
 if (filterToggle && linksMain) {
-  // Fungsi untuk memperbarui visibilitas kedua section
   const updateVisibility = () => {
     if (filterToggle.checked) {
-      // Saat toggle di posisi "Assets"
       linksMain.classList.add('hidden');
       if (assetsMain) assetsMain.classList.remove('hidden');
     } else {
-      // Saat toggle di posisi "Links"
       linksMain.classList.remove('hidden');
       if (assetsMain) assetsMain.classList.add('hidden');
     }
   };
 
-  // Setel tampilan awal berdasarkan status toggle
   updateVisibility();
 
-  // Tambahkan event listener untuk mengubah tampilan saat toggle diubah
   filterToggle.addEventListener('change', updateVisibility);
 }
 
@@ -343,7 +333,7 @@ if (filterToggle && linksMain) {
     frameCountSlider.addEventListener('input', (e) => { frameCountValue.textContent = e.target.value; });
   }
 
-  // ---------- Copy discount code ----------
+  // ---------- Discount code ----------
   const copyCodeBtn = document.getElementById('copyCodeBtn');
   if (copyCodeBtn) {
     copyCodeBtn.addEventListener('click', () => {
@@ -365,7 +355,7 @@ if (filterToggle && linksMain) {
   }
 
   // ---------- Links/Assets Tab (if present) ----------
-  const linksTab = document.getElementById('links-tab'); // or tab IDs used in your markup
+  const linksTab = document.getElementById('links-tab');
   const assetsTab = document.getElementById('assets-tab');
   const linksContent = document.getElementById('links-content');
   const assetsContent = document.getElementById('assets-content');
@@ -383,7 +373,6 @@ if (filterToggle && linksMain) {
     assetsTab.addEventListener('click', () => setActiveTab(assetsTab, linksTab, assetsContent, linksContent, 'translateX(100%)'));
   }
 
-  // ---------- Subscribe modal: ensure modal image matches theme on open ----------
   if (subscribeBtn) {
     subscribeBtn.addEventListener('click', () => { syncModalImageToTheme(); });
   }
@@ -392,6 +381,7 @@ if (filterToggle && linksMain) {
 // ---------- Load & Preloader bind (single) ----------
 window.addEventListener('load', handlePreloader);
 
-// ---------- Exposed functions for inline handlers (if any) ----------
+// ---------- Exposed functions ----------
 window.calculatePrice = calculatePrice;
 window.orderViaWhatsapp = orderViaWhatsapp;
+
