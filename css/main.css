@@ -2,7 +2,6 @@
 body {
   font-family: 'Poppins', sans-serif;
   
-  /* WARNA DASAR DAY MODE */
   background-color: #fefcff; 
   
   color: #1f2937;
@@ -36,7 +35,6 @@ body::before {
     transition: background-image 0.5s ease, opacity 0.5s ease; 
 }
 
-/* Day Mode Glow */
 body:not(.dark-mode)::before {
     opacity: 1;
     background-image: 
@@ -44,7 +42,6 @@ body:not(.dark-mode)::before {
         radial-gradient(circle at 70% 30%, rgba(255, 182, 193, 0.4), transparent 60%);
 }
 
-/* Dark Mode Glow */
 body.dark-mode::before {
     opacity: 1;
     background-image: radial-gradient(circle 500px at 50% 100px, rgba(139,92,246,0.4), transparent);
@@ -71,7 +68,6 @@ body.dark-mode::before {
 
 /* --- LIQUID GLASS (.shared-card-main) --- */
 .shared-card-main {
-    /* Liquid Glass Light Mode */
     background: rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(229, 231, 235, 0.8);
@@ -107,7 +103,6 @@ a.shared-card-style:hover {
 
 /* --- DARK MODE CARD STYLES --- */
 body.dark-mode .shared-card-main {
-    /* Liquid Glass Dark Mode */
     background: rgba(20, 20, 24, 0.4); 
     backdrop-filter: blur(10px);
     border-color: rgba(60, 56, 70, 0.6);
@@ -170,13 +165,11 @@ body.dark-mode .section-title {
   border-color: rgba(255,255,255,0.1);
 }
 
-/* Dark mode card styles */
 body.dark-mode .shared-card-link {
   background: rgba(20, 20, 24, 0.96);
   border-color: rgba(45, 36, 61, 0.5);
 }
 
-/* Dark mode text overrides */
 body.dark-mode .text-gray-800 { color: #e5e7eb; }
 body.dark-mode .text-gray-600 { color: #9ca3af; }
 body.dark-mode .text-gray-500 { color: #6b7280; }
@@ -254,14 +247,12 @@ body.dark-mode .shadow-lg {
     background: rgba(20, 20, 24, 0.9); 
 }
 
-/* Gaya elemen */
 body.dark-mode select {
     background-color: #1e1e2c !important; 
     color: #e5e7eb !important; 
     border-color: #4b5563 !important; 
 }
 
-/* Gaya khusus untuk elemen <option> dalam dropdown */
 body.dark-mode option {
     background-color: #1e1e2c; 
     color: #e5e7eb;
@@ -367,7 +358,6 @@ body.dark-mode .result-card {
   background: rgba(0,0,0,0.05);
 }
 
-/* Dark mode variations */
 body.dark-mode .assets-card-main {
   background: rgba(20, 20, 24, 0.4);
   border-color: rgba(60, 56, 70, 0.6);
@@ -386,4 +376,5 @@ body.dark-mode .assets-card-main a.shared-card-style i,
 body.dark-mode #assets-content a.shared-card-style i {
   background: rgba(255,255,255,0.04);
 }
+
 
