@@ -21,7 +21,6 @@
     </style>
 </head>
 <body class="p-4 flex flex-col items-center justify-start">
-    <!-- Preloader -->
     <div id="preloader">
         <div class="three-body">
             <div class="three-body__dot"></div>
@@ -32,16 +31,13 @@
 
     <div id="main-content" class="hidden w-full flex-grow flex flex-col justify-between items-center">
         <div class="container-wrapper w-full max-w-xl mx-auto text-center">
-            <!-- Subscribe button + Toggle Night Mode -->
             <div class="flex justify-between items-center mb-2">
-                <!-- Tombol Subscribe -->
                 <button id="subscribeBtn" class="subscribe-btn" aria-label="Subscribe" title="Subscribe">
                     <svg viewBox="0 0 448 512" class="bell" aria-hidden="true" focusable="false">
                         <path d="M224 0c-17.7 0-32 14.3-32 32V49.9C119.5 61.4 64 124.2 64 200v33.4c0 45.4-15.5 89.5-43.8 124.9L5.3 377c-5.8 7.2-6.9 17.1-2.9 25.4S14.8 416 24 416H424c9.2 0 17.6-5.3 21.6-13.6s2.9-18.2-2.9-25.4l-14.9-18.6C399.5 322.9 384 278.8 384 233.4V200c0-75.8-55.5-138.6-128-150.1V32c0-17.7-14.3-32-32-32zm0 96h8c57.4 0 104 46.6 104 104v33.4c0 47.9 13.9 94.6 39.7 134.6H72.3C98.1 328 112 281.3 112 233.4V200c0-57.4 46.6-104 104-104h8zm64 352H224 160c0 17 6.7 33.3 18.7 45.3s28.3 18.7 45.3 18.7s33.3-6.7 45.3-18.7s18.7-28.3 18.7-45.3z"></path>
                     </svg>
                 </button>
                 
-                <!-- Toggle Night Mode -->
                 <label class="relative inline-flex items-center cursor-pointer">
                     <input id="darkModeToggle" class="sr-only peer" type="checkbox" />
                     <div
@@ -125,7 +121,7 @@
                 </div>
             </div>            
 
-            <!-- GET IN TOUCH / COMMISSION FORM MODAL (SUDAH DIPERBAIKI) -->
+            <!-- COMMISSION FORM MODAL -->
             <div id="commissionModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
                 <div class="modal-content p-6 rounded-lg shadow-lg w-full max-w-sm relative flex flex-col items-center text-center">
                     <button id="closeCommissionModal" class="absolute top-2 right-2 text-gray-500 hover:text-gray-800">
@@ -137,21 +133,18 @@
                 
                     <form action="https://formspree.io/f/mrbyejwq" method="POST" class="w-full space-y-4">
                         
-                        <!-- Nama -->
                         <div class="relative z-0 w-full group">
                             <i class="fa-solid fa-user absolute start-0 bottom-3 text-gray-500 dark:text-gray-400"></i>
                             <input type="text" name="name" id="nameInput" class="form-float-input ps-8" placeholder=" " required />
                             <label for="nameInput" class="form-float-label peer-placeholder-shown:start-8 peer-focus:start-0">Name</label>
                         </div>
 
-                        <!-- Email -->
                         <div class="relative z-0 w-full group">
                             <i class="fa-solid fa-envelope absolute start-0 bottom-3 text-gray-500 dark:text-gray-400"></i>
                             <input type="email" name="email" id="emailInput" class="form-float-input ps-8" placeholder=" " required />
                             <label for="emailInput" class="form-float-label peer-placeholder-shown:start-8 peer-focus:start-0">Email</label>
                         </div>
                         
-                        <!-- Phone Number -->
                         <div class="relative z-0 w-full group">
                             <i class="fa-solid fa-phone absolute start-0 bottom-3 text-gray-500 dark:text-gray-400"></i>
                             <input 
@@ -168,7 +161,6 @@
                             <label for="phoneInput" class="form-float-label peer-placeholder-shown:start-8 peer-focus:start-0">Phone</label>
                         </div>
 
-                        <!-- Message -->
                         <div class="relative z-0 w-full group">
                             <textarea name="message" id="messageInput" rows="4" class="form-float-input resize-none" placeholder=" " required></textarea>
                             <label for="messageInput" class="form-float-label peer-placeholder-shown:start-0 peer-focus:start-0">Describe your project here...</label>
@@ -337,7 +329,6 @@
                 <img src="icon/tmb/line-art.png" alt="Assets" class="inline-block w-10 h-10 mr-10">
                 <div class="card-text-content">
                   <h3 class="font-semibold text-base inline-flex items-center gap-3">
-                    <!-- Pencil icon -->
                     <svg class="w-5 h-5 text-gray-700 flex-shrink-0" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
                       <path d="M3 21l3-1 11-11 1-3L16 3 5 14 3 21z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="currentColor" fill-opacity="0.06"/>
                       <path d="M14 6l4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
