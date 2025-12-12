@@ -252,7 +252,7 @@ const CONFIG = {
     const t = this.TRANSLATIONS[lang];
     const videos = {
       '6sbUuHw0Y-4': {
-        gif: 'assets/images/previews/jumbo-trailer.gif',
+        gif: 'assets/images/previews/jumbo-teaser.webp',
         title: t.video_jumbo_trailer_title,
         description: t.video_jumbo_trailer_desc
       },
@@ -262,7 +262,7 @@ const CONFIG = {
         description: t.video_jumbo_teaser_desc
       },
       'PfIuJwcl60E': {
-        gif: 'assets/images/previews/nussa-movie.gif',
+        gif: 'assets/images/previews/nussa-movie.webp',
         title: t.video_nussa_title,
         description: t.video_nussa_desc
       },
@@ -272,7 +272,7 @@ const CONFIG = {
         description: t.video_baraju_ep6_desc
       },
       'OTQDuKtemzc': {
-        gif: 'assets/images/previews/baraju-ep5.gif',
+        gif: 'assets/images/previews/baraju-ep6.webp',
         title: t.video_baraju_ep5_title,
         description: t.video_baraju_ep5_desc
       }
