@@ -221,58 +221,11 @@ const UIInteractions = {
       }
     };
 
-    const requestFullscreenLandscape = () => {
-      if (!isMobile()) return;
-      
-      modal.classList.add('fullscreen-mobile');
-      
-      if (modal.requestFullscreen) {
-        modal.requestFullscreen().catch(err => {
-          console.debug('Fullscreen not supported:', err);
-        });
-      }
-    };
-
-    const exitFullscreenLandscape = () => {
-      modal.classList.remove('fullscreen-mobile');
-      
-      if (document.fullscreenElement) {
-        document.exitFullscreen().catch(err => {
-          console.debug('Exit fullscreen error:', err);
-        });
-      }
-    };
-
-    // Open modal handler
     if (openBtn) {
       openBtn.addEventListener('click', () => {
         loadIframe();
-        setTimeout(() => {
-          requestFullscreenLandscape();
-        }, 300);
       });
     }
-
-    // Close button handler
-    if (closeBtn) {
-      closeBtn.addEventListener('click', () => {
-        exitFullscreenLandscape();
-      });
-    }
-
-    // Fullscreen change handler
-    document.addEventListener('fullscreenchange', () => {
-      if (!document.fullscreenElement && modal.classList.contains('modal-open')) {
-        modal.classList.remove('fullscreen-mobile');
-      }
-    });
-
-    // Background click handler
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) {
-        exitFullscreenLandscape();
-      }
-    });
   }
 };
 

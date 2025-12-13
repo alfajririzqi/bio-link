@@ -504,75 +504,18 @@ body.dark-mode #watchFullButton:hover {
     }
 }
 
-/* Mobile: Fullscreen landscape */
+/* Mobile: */
 @media (max-width: 768px) {
-    #portfolioModal.fullscreen-mobile {
-        position: fixed !important;
-        top: 0 !important;
-        left: 0 !important;
-        width: 100vw !important;
-        height: 100vh !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        background-color: #000;
-        z-index: 9999;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+    #portfolioModal .modal-content {
+        width: 95vw;
+        max-width: 95vw;
+        height: auto;
+        max-height: 85vh;
     }
     
-    #portfolioModal.fullscreen-mobile .modal-content {
-        max-width: 100vw !important;
-        width: 100vw !important;
-        height: 100vh !important;
-        max-height: 100vh !important;
-        padding: 0 !important;
-        margin: 0 !important;
-        border-radius: 0 !important;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: transparent;
-    }
-    
-    #portfolioModal.fullscreen-mobile .modal-body {
-        width: 100vw !important;
-        height: 100vh !important;
-        max-width: 100vw !important;
-        max-height: 100vh !important;
-        padding: 0 !important;
-        margin: 0 !important;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    
-    #portfolioModal.fullscreen-mobile .modal-content iframe {
-        position: absolute !important;
-        top: 0 !important;
-        left: 0 !important;
-        width: 100vw !important;
-        height: 100vh !important;
-        max-width: 100vw !important;
-        max-height: 100vh !important;
-        border: none !important;
-        margin: 0 !important;
-        padding: 0 !important;
-    }
-    
-    #portfolioModal.fullscreen-mobile #closePortfolioModal {
-        position: fixed;
-        top: 10px;
-        right: 10px;
-        z-index: 10000;
-        background: rgba(0, 0, 0, 0.7);
-        color: white;
-        border-radius: 50%;
-        width: 36px;
-        height: 36px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 20px;
+    #portfolioModal .modal-content iframe {
+        width: 100%;
+        height: 60vh;
+        border: 0;
     }
 }
