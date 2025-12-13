@@ -77,16 +77,20 @@ const CONFIG = {
       card_portfolio_title: 'Portfolio Web',
       card_jumbo_trailer: 'OFFICIAL TRAILER 1 JUMBO',
       card_jumbo_teaser: 'OFFICIAL TEASER TRAILER JUMBO',
+      card_nussa_mooi: 'EPISODE SPESIAL NUSSA x MOOI',
       card_nussa_movie: 'NUSSA SHORT MOVIE SPECIAL EDITION',
       card_baraju_ep6: 'EP06 - BoBoiBoy Galaxy Baraju',
       card_baraju_ep5: 'EP05 - BoBoiBoy Galaxy Baraju',
       card_youtube_desc: 'YouTube',
+      portfolio_loading: 'Loading portfolio...',
       
       // Video preview modal titles and descriptions
       video_jumbo_trailer_title: 'JUMBO - Official Trailer 1',
       video_jumbo_trailer_desc: 'Watch the thrilling official trailer of JUMBO from Visinema Pictures. Experience the excitement and drama in stunning visuals.',
       video_jumbo_teaser_title: 'JUMBO - Official Teaser Trailer',
       video_jumbo_teaser_desc: 'Get a first glimpse of JUMBO with this exciting teaser trailer from Visinema Pictures.',
+      video_nussa_mooi_title: 'EPISODE SPESIAL NUSSA x MOOI : RAYAKAN KEBAIKAN',
+      video_nussa_mooi_desc: 'A heartwarming special collaboration between Nussa and Mooi that celebrates kindness, compassion, and the beauty of doing good deeds. Join them on an inspiring journey of spreading positivity and making the world a better place through simple acts of kindness.',
       video_nussa_title: 'NUSSA - Short Movie Special Edition',
       video_nussa_desc: 'Join Nussa and friends in this heartwarming special edition short movie filled with valuable life lessons.',
       video_baraju_ep6_title: 'EP06 - BoBoiBoy Galaxy Baraju | Baraju Bersatu',
@@ -109,6 +113,7 @@ const CONFIG = {
       render_width: 'Width (px)',
       render_height: 'Height (px)',
       render_frames: 'Total Frames',
+      render_frame_warning: 'Frame count must be at least 1',
       render_calculate: 'Calculate Price',
       render_result_title: 'Calculation Result',
       render_total_price: 'Total Price',
@@ -192,6 +197,7 @@ const CONFIG = {
       card_commission_title: 'Buka Komisi/Proyek',
       card_renderfarm_title: 'Layanan Renderfarm',
       card_portfolio_title: 'Web Portfolio',
+      portfolio_loading: 'Memuat portofolio...',
       card_jumbo_trailer: 'TRAILER RESMI 1 JUMBO',
       card_jumbo_teaser: 'TEASER TRAILER RESMI JUMBO',
       card_nussa_movie: 'FILM PENDEK NUSSA EDISI SPESIAL',
@@ -203,8 +209,8 @@ const CONFIG = {
       video_jumbo_trailer_title: 'JUMBO - Trailer Resmi 1',
       video_jumbo_trailer_desc: 'Saksikan trailer resmi yang mendebarkan dari film JUMBO karya Visinema Pictures. Rasakan keseruan dan drama dalam visual yang memukau.',
       video_jumbo_teaser_title: 'JUMBO - Teaser Trailer Resmi',
-      video_jumbo_teaser_desc: 'Dapatkan gambaran pertama film JUMBO dengan teaser trailer yang menarik dari Visinema Pictures.',
-      video_nussa_title: 'NUSSA - Film Pendek Edisi Spesial',
+      video_jumbo_teaser_desc: 'Dapatkan gambaran pertama film JUMBO dengan teaser trailer yang menarik dari Visinema Pictures.',      video_nussa_mooi_title: 'EPISODE SPESIAL NUSSA x MOOI : RAYAKAN KEBAIKAN',
+      video_nussa_mooi_desc: 'Kolaborasi spesial yang menghangatkan hati antara Nussa dan Mooi yang merayakan kebaikan, kasih sayang, dan keindahan berbuat baik. Ikuti perjalanan inspiratif mereka dalam menyebarkan energi positif dan menjadikan dunia tempat yang lebih baik melalui aksi kebaikan sederhana.',      video_nussa_title: 'NUSSA - Film Pendek Edisi Spesial',
       video_nussa_desc: 'Bergabunglah dengan Nussa dan teman-teman dalam film pendek edisi spesial yang menghangatkan hati penuh dengan pelajaran hidup yang berharga.',
       video_baraju_ep6_title: 'EP06 - BoBoiBoy Galaxy Baraju | Baraju Bersatu',
       video_baraju_ep6_desc: 'Saksikan Episode 6 BoBoiBoy Galaxy Baraju saat Baraju bersatu! Saksikan transformasi epik dan kerja sama tim yang kuat dalam episode yang mendebarkan ini.',
@@ -226,6 +232,7 @@ const CONFIG = {
       render_width: 'Lebar (px)',
       render_height: 'Tinggi (px)',
       render_frames: 'Total Frame',
+      render_frame_warning: 'Jumlah frame minimal 1',
       render_calculate: 'Hitung Harga',
       render_result_title: 'Hasil Perhitungan',
       render_total_price: 'Total Harga',
@@ -252,12 +259,17 @@ const CONFIG = {
     const t = this.TRANSLATIONS[lang];
     const videos = {
       '6sbUuHw0Y-4': {
-        gif: 'assets/images/previews/jumbo-teaser.webp',
+        gif: 'assets/images/previews/jumbo-trailer.webp',
         title: t.video_jumbo_trailer_title,
         description: t.video_jumbo_trailer_desc
       },
+      '7a1wSjZyi5I': {
+        gif: 'assets/images/previews/nussa-mooi.webp',
+        title: t.video_nussa_mooi_title,
+        description: t.video_nussa_mooi_desc
+      },
       'YW3sQ16oksY': {
-        gif: 'assets/images/previews/jumbo-teaser.gif',
+        gif: 'assets/images/previews/jumbo-teaser.webp',
         title: t.video_jumbo_teaser_title,
         description: t.video_jumbo_teaser_desc
       },
@@ -267,12 +279,12 @@ const CONFIG = {
         description: t.video_nussa_desc
       },
       'wuZnM5o-zMM': {
-        gif: 'assets/images/previews/baraju-ep6.gif',
+        gif: 'assets/images/previews/baraju-ep6.webp',
         title: t.video_baraju_ep6_title,
         description: t.video_baraju_ep6_desc
       },
       'OTQDuKtemzc': {
-        gif: 'assets/images/previews/baraju-ep6.webp',
+        gif: 'assets/images/previews/baraju-ep5.webp',
         title: t.video_baraju_ep5_title,
         description: t.video_baraju_ep5_desc
       }

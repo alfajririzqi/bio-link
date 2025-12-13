@@ -72,7 +72,6 @@ const ModalManager = {
       title.textContent = videoData.title;
       description.textContent = videoData.description;
       
-      // Store videoId for Watch Full button
       watchBtn.setAttribute('data-video-id', videoId);
       
       modal.classList.remove('hidden');
@@ -101,7 +100,6 @@ const ModalManager = {
       modal.classList.add('modal-open');
       document.body.classList.add('modal-open');
       
-      // Request fullscreen after short delay
       setTimeout(() => {
         this.requestFullscreen(modal);
       }, 300);
@@ -113,7 +111,6 @@ const ModalManager = {
     const iframe = Utils.getElement('youtubeIframe');
 
     if (modal) {
-      // Exit fullscreen if active
       if (document.fullscreenElement) {
         document.exitFullscreen().catch(err => console.debug('Exit fullscreen error:', err));
       }

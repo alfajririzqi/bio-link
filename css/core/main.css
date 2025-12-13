@@ -301,7 +301,6 @@ body.dark-mode .result-card {
   transition: all var(--transition-slow);
 }
 
-/* Ensure cards inside assets container match shared card layout */
 .assets-card-main a.shared-card-style,
 #assets-content a.shared-card-style {
   display: flex !important;
@@ -313,7 +312,6 @@ body.dark-mode .result-card {
   box-sizing: border-box;
 }
 
-/* Icon (<i>) styling inside asset cards */
 .assets-card-main a.shared-card-style i,
 #assets-content a.shared-card-style i {
   font-size: 1.4em;

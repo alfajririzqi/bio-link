@@ -68,7 +68,6 @@
     gap: 12px;
   }
   
-  /* Thumbnail image in asset modal by 20% */
   #assetManagementModal .modal-content img {
     width: 85%;
     max-width: 85%;

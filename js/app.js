@@ -64,7 +64,6 @@ const ModalSetup = {
     if (trigger && modal) {
       trigger.addEventListener('click', (e) => {
         e.preventDefault();
-        // Sync modal image for subscribe modal before opening
         if (modalId === 'subscribeModal') {
           ThemeManager.syncModalImage();
         }
@@ -107,7 +106,6 @@ const UIInteractions = {
       });
     }
 
-    // Close preview modal
     if (closePreviewBtn) {
       closePreviewBtn.addEventListener('click', () => ModalManager.closePreview());
     }
@@ -183,10 +181,45 @@ const UIInteractions = {
     const modal = Utils.getElement('portfolioModal');
     const closeBtn = Utils.getElement('closePortfolioModal');
     const openBtn = Utils.getElement('portfolioModalLink');
+    const iframe = Utils.getElement('portfolioIframe');
+    const loadingIndicator = Utils.getElement('portfolioLoading');
     
     if (!modal) return;
 
     const isMobile = () => window.innerWidth <= 768;
+    let iframeLoaded = false;
+
+    const loadIframe = () => {
+      if (iframeLoaded) return;
+      
+      const iframeContainer = iframe?.parentElement;
+      if (!iframe || !loadingIndicator || !iframeContainer) return;
+      
+      // Show loading indicator
+      loadingIndicator.classList.remove('hidden');
+      iframeContainer.classList.add('hidden');
+      
+      const src = iframe.getAttribute('data-src');
+      if (src && !iframe.src) {
+        iframe.src = src;
+        
+        iframe.onload = () => {
+          setTimeout(() => {
+            loadingIndicator.classList.add('hidden');
+            iframeContainer.classList.remove('hidden');
+            iframeLoaded = true;
+          }, 300);
+        };
+        
+        setTimeout(() => {
+          if (!iframeLoaded) {
+            loadingIndicator.classList.add('hidden');
+            iframeContainer.classList.remove('hidden');
+            iframeLoaded = true;
+          }
+        }, 3000);
+      }
+    };
 
     const requestFullscreenLandscape = () => {
       if (!isMobile()) return;
@@ -196,7 +229,6 @@ const UIInteractions = {
       // Request fullscreen
       if (modal.requestFullscreen) {
         modal.requestFullscreen().then(() => {
-          // Lock to landscape orientation
           if (screen.orientation && screen.orientation.lock) {
             screen.orientation.lock('landscape').catch(err => {
               console.debug('Orientation lock not supported:', err);
@@ -217,7 +249,6 @@ const UIInteractions = {
         });
       }
       
-      // Unlock orientation
       if (screen.orientation && screen.orientation.unlock) {
         try {
           screen.orientation.unlock();
@@ -230,6 +261,7 @@ const UIInteractions = {
     // Open modal handler
     if (openBtn) {
       openBtn.addEventListener('click', () => {
+        loadIframe();
         setTimeout(() => {
           requestFullscreenLandscape();
         }, 300);
@@ -267,9 +299,8 @@ async function handleFormSubmit(event) {
   const form = event.target;
   const submitButton = form.querySelector('button[type="submit"]');
   const buttonText = submitButton.querySelector('.button-text');
-  const spinner = submitButton.querySelector('.spinner');
+  const spinner = submitButton.querySelector('.three-body');
 
-  // Show loading state with smooth transition
   const iconWrapper = submitButton.querySelector('.w-0');
   
   buttonText.classList.add('opacity-0');
@@ -283,7 +314,6 @@ async function handleFormSubmit(event) {
 
   const data = new FormData(form);
   
-  // Add 1 second minimum delay for smooth UX
   const delayedFetch = new Promise((resolve) => {
     setTimeout(() => {
       fetch(form.action, {
@@ -301,20 +331,17 @@ async function handleFormSubmit(event) {
     console.debug('[Formspree] Response status:', response && response.status);
 
     if (response && response.ok) {
-      // Add closing animation to current modal
       const currentModal = form.closest('.fixed');
       if (currentModal) {
         currentModal.classList.add('modal-closing');
         
-        // Wait for animation to complete before hiding
         setTimeout(() => {
           currentModal.style.display = 'none';
           currentModal.classList.add('hidden');
           currentModal.classList.remove('modal-closing');
-        }, 300); // Match animation duration
+        }, 300);
       }
 
-      // Show greeting modal after 0.5s delay (300ms close animation + 200ms gap)
       setTimeout(() => {
         const greetingModal = document.getElementById('greetingModal');
         const greetingMessage = document.getElementById('greetingModalMessage');
@@ -328,7 +355,6 @@ async function handleFormSubmit(event) {
         greetingModal.classList.remove('hidden');
       }, 500);
       
-      // Reset form
       form.reset();
     } else {
       console.warn('[Formspree] Non-OK response, showing greeting fallback');
@@ -349,7 +375,6 @@ async function handleFormSubmit(event) {
     }
   } catch (error) {
     console.error('[Formspree] Fetch error:', error);
-    // Show greeting as a graceful fallback
     const currentModal = form.closest('.fixed');
     if (currentModal) {
       currentModal.style.display = 'none';
@@ -365,7 +390,6 @@ async function handleFormSubmit(event) {
       greetingModal.classList.remove('hidden');
     }, 100);
   } finally {
-    // Hide loading state with smooth transition
     const iconWrapper = submitButton.querySelector('.w-0');
     
     setTimeout(() => {
@@ -378,7 +402,6 @@ async function handleFormSubmit(event) {
   }
 }
 
-// Initialize form submission handlers when DOM is ready
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', initializeFormSubmissionHandlers);
 } else {
@@ -396,7 +419,6 @@ function initializeFormSubmissionHandlers() {
     commissionForm.addEventListener("submit", handleFormSubmit);
   }
 
-  // Greeting modal close button
   const closeGreetingModal = document.getElementById('closeGreetingModal');
   const greetingModal = document.getElementById('greetingModal');
   if (closeGreetingModal) {

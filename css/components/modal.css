@@ -187,7 +187,6 @@ body.dark-mode .copy-btn {
   color: #e5e7eb;
 }
 
-/* Action button with icon animation */
 .modal-action-btn {
   background-color: #000;
   color: white;
@@ -198,33 +197,28 @@ body.dark-mode .copy-btn {
   stroke: currentColor;
 }
 
-/* Dark mode - Download button (first button) */
-body.dark-mode .modal-action-btn:first-of-type {
-  background-color: rgba(0, 0, 0, 0.7);
-  color: #ffffff;
-}
-
-body.dark-mode .modal-action-btn:first-of-type svg path,
-body.dark-mode .modal-action-btn:first-of-type i {
-  color: #ffffff;
-  fill: #ffffff;
-  stroke: #ffffff;
-}
-
-body.dark-mode .modal-action-btn:first-of-type:hover {
-  background-color: rgba(0, 0, 0, 0.85);
-}
-
-/* Dark mode - Documentation button (second button) stays as is */
-body.dark-mode .modal-action-btn:not(:first-of-type) {
+body.dark-mode .modal-action-btn {
   background-color: rgba(255, 255, 255, 0.95);
   color: #000;
 }
 
-body.dark-mode .modal-action-btn:not(:first-of-type) svg path,
-body.dark-mode .modal-action-btn:not(:first-of-type) i {
+body.dark-mode .modal-action-btn svg path,
+body.dark-mode .modal-action-btn i {
+  color: #000;
   fill: #000;
   stroke: #000;
+}
+
+body.dark-mode .modal-action-btn:hover {
+  background-color: rgba(255, 255, 255, 1);
+}
+
+#portfolioLoading p {
+  color: #1f2937 !important; 
+}
+
+body.dark-mode #portfolioLoading p {
+  color: #f3f4f6 !important; 
 }
 
 /* Video modal sizing */
@@ -362,157 +356,6 @@ body.dark-mode .form-input:focus {
   border-color: var(--color-accent);
   box-shadow: 0 0 0 3px rgba(167, 139, 250, 0.2);
   background-color: rgba(45, 45, 50, 0.7);
-}
-
-/* Loading spinner for submit button - Blade Spinner Design */
-.spinner {
-  font-size: 20px;
-  position: relative;
-  display: inline-block;
-  width: 1em;
-  height: 1em;
-}
-
-.spinner.center {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  margin: auto;
-}
-
-.spinner .spinner-blade {
-  position: absolute;
-  left: 0.4629em;
-  bottom: 0;
-  width: 0.074em;
-  height: 0.2777em;
-  border-radius: 0.0555em;
-  background-color: transparent;
-  -webkit-transform-origin: center -0.2222em;
-  -ms-transform-origin: center -0.2222em;
-  transform-origin: center -0.2222em;
-  animation: spinner-fade9234 1s infinite linear;
-}
-
-.spinner .spinner-blade:nth-child(1) {
-  -webkit-animation-delay: 0s;
-  animation-delay: 0s;
-  -webkit-transform: rotate(0deg);
-  -ms-transform: rotate(0deg);
-  transform: rotate(0deg);
-}
-
-.spinner .spinner-blade:nth-child(2) {
-  -webkit-animation-delay: 0.083s;
-  animation-delay: 0.083s;
-  -webkit-transform: rotate(30deg);
-  -ms-transform: rotate(30deg);
-  transform: rotate(30deg);
-}
-
-.spinner .spinner-blade:nth-child(3) {
-  -webkit-animation-delay: 0.166s;
-  animation-delay: 0.166s;
-  -webkit-transform: rotate(60deg);
-  -ms-transform: rotate(60deg);
-  transform: rotate(60deg);
-}
-
-.spinner .spinner-blade:nth-child(4) {
-  -webkit-animation-delay: 0.249s;
-  animation-delay: 0.249s;
-  -webkit-transform: rotate(90deg);
-  -ms-transform: rotate(90deg);
-  transform: rotate(90deg);
-}
-
-.spinner .spinner-blade:nth-child(5) {
-  -webkit-animation-delay: 0.332s;
-  animation-delay: 0.332s;
-  -webkit-transform: rotate(120deg);
-  -ms-transform: rotate(120deg);
-  transform: rotate(120deg);
-}
-
-.spinner .spinner-blade:nth-child(6) {
-  -webkit-animation-delay: 0.415s;
-  animation-delay: 0.415s;
-  -webkit-transform: rotate(150deg);
-  -ms-transform: rotate(150deg);
-  transform: rotate(150deg);
-}
-
-.spinner .spinner-blade:nth-child(7) {
-  -webkit-animation-delay: 0.498s;
-  animation-delay: 0.498s;
-  -webkit-transform: rotate(180deg);
-  -ms-transform: rotate(180deg);
-  transform: rotate(180deg);
-}
-
-.spinner .spinner-blade:nth-child(8) {
-  -webkit-animation-delay: 0.581s;
-  animation-delay: 0.581s;
-  -webkit-transform: rotate(210deg);
-  -ms-transform: rotate(210deg);
-  transform: rotate(210deg);
-}
-
-.spinner .spinner-blade:nth-child(9) {
-  -webkit-animation-delay: 0.664s;
-  animation-delay: 0.664s;
-  -webkit-transform: rotate(240deg);
-  -ms-transform: rotate(240deg);
-  transform: rotate(240deg);
-}
-
-.spinner .spinner-blade:nth-child(10) {
-  -webkit-animation-delay: 0.747s;
-  animation-delay: 0.747s;
-  -webkit-transform: rotate(270deg);
-  -ms-transform: rotate(270deg);
-  transform: rotate(270deg);
-}
-
-.spinner .spinner-blade:nth-child(11) {
-  -webkit-animation-delay: 0.83s;
-  animation-delay: 0.83s;
-  -webkit-transform: rotate(300deg);
-  -ms-transform: rotate(300deg);
-  transform: rotate(300deg);
-}
-
-.spinner .spinner-blade:nth-child(12) {
-  -webkit-animation-delay: 0.913s;
-  animation-delay: 0.913s;
-  -webkit-transform: rotate(330deg);
-  -ms-transform: rotate(330deg);
-  transform: rotate(330deg);
-}
-
-@keyframes spinner-fade9234 {
-  0% {
-    background-color: #ffffff;
-  }
-  100% {
-    background-color: transparent;
-  }
-}
-
-/* Dark mode spinner color */
-body.dark-mode .spinner .spinner-blade {
-  animation: spinner-fade-dark 1s infinite linear;
-}
-
-@keyframes spinner-fade-dark {
-  0% {
-    background-color: #000000;
-  }
-  100% {
-    background-color: transparent;
-  }
 }
 
 /* Button text smooth transition */
@@ -657,7 +500,7 @@ body.dark-mode #watchFullButton:hover {
     
     #portfolioModal .modal-content iframe {
         width: 100% !important;
-        height: calc(50vw * 0.593) !important; /* Maintain aspect ratio */
+        height: calc(50vw * 0.593) !important; 
     }
 }
 

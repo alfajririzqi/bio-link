@@ -11,6 +11,17 @@ const RenderCalculator = {
 
     if (!frameCountInput || !resultDiv || !loadingDiv) return;
 
+    // Validate frame count
+    const frameCount = parseInt(frameCountInput.value, 10);
+    const frameWarningDiv = Utils.getElement('frameCountWarning');
+    
+    if (!frameCount || frameCount <= 0) {
+      frameWarningDiv?.classList.remove('hidden');
+      return;
+    } else {
+      frameWarningDiv?.classList.add('hidden');
+    }
+
     // Validate custom resolution if selected
     if (resolution === 'custom') {
       const customWidth = Utils.getElement('customWidth');
@@ -29,7 +40,7 @@ const RenderCalculator = {
     loadingDiv.classList.remove('hidden');
 
     setTimeout(() => {
-      const frameCount = parseInt(frameCountInput.value, 10);
+      // Use validated frameCount from above
       const renderEngine = Utils.getElement('renderEngine')?.value || '';
       const totalPriceEl = Utils.getElement('totalPrice');
       const totalTimeEl = Utils.getElement('totalTime');
@@ -44,10 +55,10 @@ const RenderCalculator = {
 
         // Reference resolutions with pixel counts
         const resolutions = {
-          'HD (1280x720)': 1280 * 720,           // 921,600
-          'Full HD (1920x1080)': 1920 * 1080,     // 2,073,600
-          '2K (2048x1080)': 2048 * 1080,          // 2,211,840
-          '4K (3840x2160)': 3840 * 2160           // 8,294,400
+          'HD (1280x720)': 1280 * 720,           
+          'Full HD (1920x1080)': 1920 * 1080,     
+          '2K (2048x1080)': 2048 * 1080,          
+          '4K (3840x2160)': 3840 * 2160          
         };
 
         // Find closest reference resolution for pricing
@@ -76,9 +87,7 @@ const RenderCalculator = {
     }, 1000);
   },
 
-  /**
-   * Order via WhatsApp with pre-filled message
-   */
+
   orderViaWhatsapp() {
     const renderEngine = Utils.getElement('renderEngine')?.value || '';
     const blenderVersion = Utils.getElement('blenderVersion')?.value || '';

@@ -39,7 +39,6 @@
 .three-body {
   --uib-size: 35px;
   --uib-speed: 0.8s;
-  --uib-color: #3498db;
   position: relative;
   display: inline-block;
   height: var(--uib-size);
@@ -53,13 +52,19 @@
   width: 30%;
 }
 
+/* Day mode */
 .three-body__dot:after {
   content: '';
   position: absolute;
   width: 100%;
   padding-bottom: 100%;
-  background-color: var(--uib-color);
+  background: linear-gradient(135deg, #3498db 60%, #a78bfa 100%);
   border-radius: 50%;
+}
+
+/* Dark mode */
+body.dark-mode .three-body__dot:after {
+  background: linear-gradient(135deg, #a78bfa 60%, #60a5fa 100%);
 }
 
 .three-body__dot:nth-child(1) {
@@ -109,8 +114,28 @@
   50% { transform: translateY(66%) scale(0.65); opacity: 0.8; }
 }
 
-body.dark-mode .three-body {
-  --uib-color: #60a5fa;
+.three-body.center {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  z-index: 10;
+}
+
+/* Loader inside button */
+.modal-action-btn .three-body {
+  --uib-size: 30px;
+}
+
+/* Loader inside button */
+.modal-action-btn .three-body__dot:after {
+  background: linear-gradient(135deg, #ffffff 60%, #e0e7ff 100%);
+}
+
+body.dark-mode .modal-action-btn .three-body__dot:after {
+  background: linear-gradient(135deg, #3498db 60%, #a78bfa 100%);
 }
 
 /* ========================================= */
@@ -143,30 +168,4 @@ body.dark-mode .three-body {
 
 .modal-content.animate-out {
   animation: fadeOutZoomOut var(--transition-fast) forwards;
-}
-
-/* ====== LOADING CALCULATOR RENDER ====== */
-.loading-animation {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  display: inline-block;
-  border-top: 3px solid var(--color-text);
-  border-right: 3px solid transparent;
-  box-sizing: border-box;
-  animation: rotation 1s linear infinite;
-}
-
-/* Dark Mode Override */
-body.dark-mode .loading-animation {
-  border-top: 3px solid var(--color-text-dark);
-}
-
-@keyframes rotation {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
 }

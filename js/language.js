@@ -23,14 +23,12 @@ const LanguageManager = {
       languageDropdown.classList.toggle('show');
     });
 
-    // Close dropdown when clicking outside
     document.addEventListener('click', (e) => {
       if (!languageBtn.contains(e.target) && !languageDropdown.contains(e.target)) {
         languageDropdown.classList.remove('show');
       }
     });
 
-    // Language selection
     languageOptions.forEach(option => {
       option.addEventListener('click', () => {
         const lang = option.getAttribute('data-lang');
@@ -39,7 +37,6 @@ const LanguageManager = {
       });
     });
 
-    // Update active state
     this.updateActiveOption();
   },
 
@@ -78,7 +75,6 @@ const LanguageManager = {
     const translations = CONFIG.TRANSLATIONS[this.currentLang];
     if (!translations) return;
 
-    // Translate elements with data-i18n attribute
     document.querySelectorAll('[data-i18n]').forEach(element => {
       const key = element.getAttribute('data-i18n');
       if (translations[key]) {

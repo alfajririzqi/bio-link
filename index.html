@@ -39,7 +39,7 @@
     <link rel="stylesheet" href="css/core/main.css?v=2">
     <link rel="stylesheet" href="css/core/animation.css?v=2">
     <link rel="stylesheet" href="css/components/button.css?v=2">
-    <link rel="stylesheet" href="css/components/modal.css?v=5">
+    <link rel="stylesheet" href="css/components/modal.css?v=6">
     <link rel="stylesheet" href="css/responsive/mobile.css?v=2">
     <link rel="stylesheet" href="css/responsive/tablet.css?v=2">
     <link rel="stylesheet" href="css/responsive/desktop.css?v=2">
@@ -112,7 +112,7 @@
                 
                     <div class="flex flex-col items-center text-center">
                         <h2 class="text-xl font-semibold mb-4 text-gray-800" id="courseModalTitle" data-i18n="modal_course_title">Procedural Environment Course Discount</h2>
-                        <img src="assets/images/thumbnails/course.png" alt="Procedural Environment Course" class="w-32 h-44 object-cover rounded-lg mb-4" loading="lazy">
+                        <img src="assets/images/thumbnails/course.webp" alt="Procedural Environment Course" class="w-32 h-44 object-cover rounded-lg mb-4" loading="lazy">
                         <p class="text-gray-600 mb-6" data-i18n="modal_course_desc">Copy the code and visit the store to claim your discount</p>
                         <div class="discount-container">
                             <p class="discount-code">
@@ -155,19 +155,10 @@
                             <div class="w-0 translate-x-[100%] pl-0 opacity-0 transition-all duration-200 group-hover:w-5 group-hover:translate-x-0 group-hover:pl-2 group-hover:opacity-100">
                                 <i class="fa-solid fa-bell"></i>
                             </div>
-                            <div class="spinner center hidden">
-                                <div class="spinner-blade"></div>
-                                <div class="spinner-blade"></div>
-                                <div class="spinner-blade"></div>
-                                <div class="spinner-blade"></div>
-                                <div class="spinner-blade"></div>
-                                <div class="spinner-blade"></div>
-                                <div class="spinner-blade"></div>
-                                <div class="spinner-blade"></div>
-                                <div class="spinner-blade"></div>
-                                <div class="spinner-blade"></div>
-                                <div class="spinner-blade"></div>
-                                <div class="spinner-blade"></div>
+                            <div class="three-body center hidden">
+                                <div class="three-body__dot"></div>
+                                <div class="three-body__dot"></div>
+                                <div class="three-body__dot"></div>
                             </div>
                         </button>
                     </form>
@@ -180,12 +171,23 @@
                     <button id="closePortfolioModal" class="absolute top-2 right-2 text-gray-500 hover:text-gray-800" aria-label="Close portfolio modal">
                         ✕
                     </button>
-                    <div class="modal-body flex justify-center items-center w-full">
+                    <!-- Loading indicator -->
+                    <div id="portfolioLoading" class="modal-body flex flex-col justify-center items-center w-full h-64">
+                        <div class="three-body mb-4">
+                            <div class="three-body__dot"></div>
+                            <div class="three-body__dot"></div>
+                            <div class="three-body__dot"></div>
+                        </div>
+                        <p class="text-gray-900 dark:text-gray-100" data-i18n="portfolio_loading">Loading portfolio...</p>
+                    </div>
+                    <!-- Portfolio iframe (lazy loaded) -->
+                    <div class="modal-body flex justify-center items-center w-full hidden">
                         <iframe
+                            id="portfolioIframe"
                             allowfullscreen
                             allow="clipboard-write"
                             scrolling="no"
-                            src="https://heyzine.com/flip-book/cbf46e6bef.html"
+                            data-src="https://heyzine.com/flip-book/cbf46e6bef.html"
                             style="border: 0px; width: 584px; height: 346px;">
                         </iframe>
                     </div>
@@ -247,19 +249,10 @@
                             <div class="w-0 translate-x-[100%] pl-0 opacity-0 transition-all duration-200 group-hover:w-5 group-hover:translate-x-0 group-hover:pl-2 group-hover:opacity-100">
                                 <i class="fa-regular fa-message"></i>
                             </div>
-                            <div class="spinner center hidden">
-                                <div class="spinner-blade"></div>
-                                <div class="spinner-blade"></div>
-                                <div class="spinner-blade"></div>
-                                <div class="spinner-blade"></div>
-                                <div class="spinner-blade"></div>
-                                <div class="spinner-blade"></div>
-                                <div class="spinner-blade"></div>
-                                <div class="spinner-blade"></div>
-                                <div class="spinner-blade"></div>
-                                <div class="spinner-blade"></div>
-                                <div class="spinner-blade"></div>
-                                <div class="spinner-blade"></div>
+                            <div class="three-body center hidden">
+                                <div class="three-body__dot"></div>
+                                <div class="three-body__dot"></div>
+                                <div class="three-body__dot"></div>
                             </div>
                         </button>
                     </form>
@@ -274,16 +267,9 @@
                         ✕
                     </button>
                     <div class="modal-body flex flex-col items-center">
-                        <!-- GIF Preview -->
                         <img id="previewGif" src="" alt="Video Preview" class="w-full max-w-md rounded-lg mb-4" loading="lazy">
-                        
-                        <!-- Title -->
                         <h2 id="previewTitle" class="text-xl font-bold mb-2 text-center">Video Title</h2>
-                        
-                        <!-- Description -->
                         <p id="previewDescription" class="text-sm text-gray-600 mb-4 text-center max-w-md">Video description goes here.</p>
-                        
-                        <!-- Watch Full Button -->
                         <button id="watchFullButton" class="bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-6 rounded-lg flex items-center gap-2 transition-colors">
                             <i class="fab fa-youtube"></i>
                             <span data-i18n="video_watch_full">Watch Full Video</span>
@@ -318,9 +304,9 @@
                     </button>
                 
                     <h2 id="assetManagementModalTitle" class="text-xl font-semibold mb-4 text-gray-800" data-i18n="modal_asset_title">Blender Asset Management Addon</h2>
-                    <picture>
+                    <picture class="flex justify-center mb-4">
                         <source srcset="assets/images/thumbnails/asset-management.webp" type="image/webp">
-                        <img src="assets/images/thumbnails/asset-management.png" alt="Blender Asset Management Addon" class="w-full h-auto object-cover rounded-lg mb-4" loading="lazy">
+                        <img src="assets/images/thumbnails/asset-management.png" alt="Blender Asset Management Addon" class="w-full h-auto object-cover rounded-lg" loading="lazy">
                     </picture>
                     <p class="text-gray-600 mb-4 text-sm leading-relaxed" data-i18n="modal_asset_desc">Organize and manage your 3D assets efficiently in Blender.</p>
                     
@@ -440,14 +426,20 @@
                 <!-- WORKS -->
                 <p class="section-title" data-i18n="section_works">Showcase</p>
                 <a href="#" class="shared-card-style block py-4 hover:scale-98 transform transition-all youtube-modal-trigger" data-video-id="wuZnM5o-zMM">
-                    <img src="assets/images/thumbnails/boboiboy-baraju_ep6.jpg" alt="EP06 - BoBoiBoy Galaxy Baraju" class="inline-block w-10 h-10 mr-10 object-cover" loading="lazy" width="40" height="40">
+                    <picture>
+                        <source srcset="assets/images/thumbnails/boboiboy-baraju_ep6.webp" type="image/webp">
+                        <img src="assets/images/thumbnails/boboiboy-baraju_ep6.jpg" alt="EP06 - BoBoiBoy Galaxy Baraju" class="inline-block w-10 h-10 mr-10 object-cover" loading="lazy" width="40" height="40">
+                    </picture>
                     <div class="card-text-content">
                         <h3 class="font-semibold text-base" data-i18n="card_baraju_ep6">EP06 - BoBoiBoy Galaxy Baraju</h3>
                         <p class="text-sm text-gray-600"><i class="fab fa-youtube text-red-600 mr-1"></i><span data-i18n="card_youtube_desc">YouTube</span> - Monsta</p>
                     </div>
                 </a>
                 <a href="#" class="shared-card-style block py-4 hover:scale-98 transform transition-all youtube-modal-trigger" data-video-id="OTQDuKtemzc">
-                    <img src="assets/images/thumbnails/boboiboy-baraju_ep5.jpg" alt="EP05 - BoBoiBoy Galaxy Baraju" class="inline-block w-10 h-10 mr-10 object-cover" loading="lazy" width="40" height="40">
+                    <picture>
+                        <source srcset="assets/images/thumbnails/boboiboy-baraju_ep5.webp" type="image/webp">
+                        <img src="assets/images/thumbnails/boboiboy-baraju_ep5.jpg" alt="EP05 - BoBoiBoy Galaxy Baraju" class="inline-block w-10 h-10 mr-10 object-cover" loading="lazy" width="40" height="40">
+                    </picture>
                     <div class="card-text-content">
                         <h3 class="font-semibold text-base" data-i18n="card_baraju_ep5">EP05 - BoBoiBoy Galaxy Baraju</h3>
                         <p class="text-sm text-gray-600"><i class="fab fa-youtube text-red-600 mr-1"></i><span data-i18n="card_youtube_desc">YouTube</span> - Monsta</p>
@@ -465,6 +457,13 @@
                     <div class="card-text-content">
                         <h3 class="font-semibold text-base" data-i18n="card_jumbo_teaser">OFFICIAL TEASER TRAILER JUMBO</h3>
                         <p class="text-sm text-gray-600"><i class="fab fa-youtube text-red-600 mr-1"></i><span data-i18n="card_youtube_desc">YouTube</span> - Visinema Pictures</p>
+                    </div>
+                </a>
+                <a href="#" class="shared-card-style block py-4 hover:scale-98 transform transition-all youtube-modal-trigger" data-video-id="7a1wSjZyi5I">
+                    <img src="assets/images/thumbnails/nussa-mooi.jpg" alt="Episode Spesial Nussa x Mooi - Rayakan Kebaikan" class="inline-block w-10 h-10 mr-10 object-cover" loading="lazy" width="40" height="40">
+                    <div class="card-text-content">
+                        <h3 class="font-semibold text-base" data-i18n="card_nussa_mooi">EPISODE SPESIAL NUSSA x MOOI</h3>
+                        <p class="text-sm text-gray-600"><i class="fab fa-youtube text-red-600 mr-1"></i><span data-i18n="card_youtube_desc">YouTube</span> - NussaOfficial</p>
                     </div>
                 </a>
                 <a href="#" class="shared-card-style block py-4 hover:scale-98 transform transition-all youtube-modal-trigger" data-video-id="PfIuJwcl60E">
