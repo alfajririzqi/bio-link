@@ -226,15 +226,8 @@ const UIInteractions = {
       
       modal.classList.add('fullscreen-mobile');
       
-      // Request fullscreen
       if (modal.requestFullscreen) {
-        modal.requestFullscreen().then(() => {
-          if (screen.orientation && screen.orientation.lock) {
-            screen.orientation.lock('landscape').catch(err => {
-              console.debug('Orientation lock not supported:', err);
-            });
-          }
-        }).catch(err => {
+        modal.requestFullscreen().catch(err => {
           console.debug('Fullscreen not supported:', err);
         });
       }
@@ -247,14 +240,6 @@ const UIInteractions = {
         document.exitFullscreen().catch(err => {
           console.debug('Exit fullscreen error:', err);
         });
-      }
-      
-      if (screen.orientation && screen.orientation.unlock) {
-        try {
-          screen.orientation.unlock();
-        } catch (err) {
-          console.debug('Orientation unlock error:', err);
-        }
       }
     };
 
